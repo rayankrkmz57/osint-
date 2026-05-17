@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>OSINT Username Finder</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #eee; text-align: center; }
+    input, button { padding: 10px; margin: 10px; }
+    a { color: #4da6ff; display: block; margin: 5px; }
+  </style>
+</head>
+<body>
+
+<h1>🔍 OSINT Username Finder</h1>
+
+<input type="text" id="username" placeholder="Entrez un pseudo">
+<button onclick="search()">Rechercher</button>
+
+<div id="results"></div>
+
+<script>
+function search() {
+  const user = document.getElementById("username").value;
+  const sites = [
+    { name: "Twitter/X", url: "https://x.com/" },
+    { name: "Instagram", url: "https://instagram.com/" },
+    { name: "GitHub", url: "https://github.com/" },
+    { name: "Reddit", url: "https://reddit.com/user/" }
+  ];
+
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "<h2>Résultats :</h2>";
+
+  sites.forEach(site => {
+    const link = site.url + user;
+    resultsDiv.innerHTML += `<a href="${link}" target="_blank">${site.name}</a>`;
+  });
+}
+</script>
+
+</body>
+</html>
